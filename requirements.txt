@@ -4,3 +4,4 @@ langsmith
 langchain 
 langchain_groq 
 langchain_community
+load_dotenv
