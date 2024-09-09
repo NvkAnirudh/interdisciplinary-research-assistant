@@ -1,9 +1,9 @@
 # Interdisciplinary Research Assistant
 
-### Introduction
+## Introduction
 An AI-powered research assistant that helps users explore complex topics by combining information from various sources, including general knowledge, scientific papers, and encyclopedic entries. The application will provide a rich, interactive experience that simulates the process of consulting multiple experts on a given topic.
 
-### Key Features
+## Key Features
 
 - Topic exploration with multi-source information
 - Visual representation of information sources
