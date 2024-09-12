@@ -1,9 +1,8 @@
 import os
 from dotenv import load_dotenv
 from tools import tools, wiki_tool, arxiv_tool
-from tasks import analyze_task, llm_task, wiki_task, arxiv_task, aggregate_task
 
-from crewai import Agent, Task, Crew
+from crewai import Agent
 from langchain_groq import ChatGroq
 
 load_dotenv()
@@ -16,7 +15,7 @@ llm_with_tools = llm.bind_tools(tools=tools)
 
 # Agents
 query_analyzer = Agent(
-    role='Quer Analyzer',
+    role='Query Analyzer',
     goal='Analyze user queries to determine relevant knowledge sources',
     backstory='Expert in natural language processing and query intent classification',
     allow_delegation=True,
@@ -54,5 +53,13 @@ response_aggregator = Agent(
     goal="Combine and synthesize responses from different sources",
     backstory="Expert in information synthesis and summary",
     allow_delegation=True,
+    llm=llm
+)
+
+follow_up_generator = Agent(
+    role="Follow-up Generator",
+    goal="Generate follow-up questions and further reading suggestions",
+    backstory="Expert in identifying knowledge gaps and suggesting relevant resources",
+    allow_delegation=False,
     llm=llm
 )

@@ -1,12 +1,15 @@
-from crew import Crew
+from crewai import Crew
 from agents import query_analyzer, llm_agent, wikipedia_agent, arxiv_agent, response_aggregator
-from tasks import analyze_task, llm_task, wiki_task, arxiv_task, aggregate_task
+from tasks import create_tasks
 
 # Chatbot function
 def chatbot(query):
+    tasks = create_tasks(query)
+
     crew = Crew(
         agents=[query_analyzer, llm_agent, wikipedia_agent, arxiv_agent, response_aggregator],
-        tasks=[analyze_task, llm_task, wiki_task, arxiv_task, aggregate_task],
+        tasks=tasks,
+        # tasks=[analyze_task, llm_task, wiki_task, arxiv_task, aggregate_task],
         verbose=True
     )
     
